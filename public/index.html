@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="shopApp"></html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cart</title>
+  <meta name="description" content="My new project description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <div class="inner"><a href="index.html"><img src="https://www.chelseagroton.com/Portals/0/logo.png" class="logo left h-60 p-5"></a><a href="checkout.html" class="cartpreview right">
+          <div class="left cart"><i class="left fa fa-shopping-cart"></i>
+            <div class="left simpleCart_quantity"></div>
+          </div></a>
+      </div>
+    </header>
+    <div class="ribbon mt-60 text-center hide">
+      <h2 class="pt-60 font-300">Welcome to the Chelsea Groton Shop!</h2>
+    </div>
+    <div ng-controller="itemController" class="container mt-120">
+      <div class="row hide"><i class="fa fa-th fa-2x mr-20"></i><i class="fa fa-align-justify fa-2x"></i></div>
+      <div ng-hide="cardActive" class="row">
+        <input type="text" ng-model="search.itemname" placeholder="Search" ng-change="slickCarousel();" class="search">
+      </div>
+      <div class="row">
+        <div ng-show="cardActive" ng-click="hideCard()" class="shopmore"> <i class="fa fa-angle-left"></i> Continue Shopping</div>
+        <div ng-repeat="item in items | filter: search" data-item="{{item.id}}" ng-class="{ 'visible': activeitem == '{{item.id}}' }" ng-show="cardActive &amp;&amp; activeitem === '{{item.id}}'" class="itemcard simpleCart_shelfItem">
+          <div class="images slideshow"><img ng-src="{{item.photos.thumbnail}}" class="thumb photo active">
+          </div>
+          <div class="item-info">
+            <div title="{{item.itemname}}" contentEditable="true" class="item_name">{{ item.itemname }}</div>
+            <div class="complimentary_desc">{{ item.id }}</div>
+            <div class="item_price">{{ item.price }}</div>
+            <div contentEditable="true" ng-blur="update();" class="item_desc mb-10">{{ item.description }}</div>
+            <div>Color</div><img ng-src="{{item.photos.thumbnail}}" class="item_thumb w-80 hide">
+            <div class="colors row mb-10 mt-8">
+              <form class="p-0">
+                <div ng-repeat="color in item.color.options track by $index" class="colorholder">
+                  <input type="radio" id="color{{item.id}}{{color}}" name="color" ng-model="item.color.default" value="{{color}}" ng-click="item.photos.thumbnail = item.photos.gallery[$index]; item.color.default = item.color.options[$index]" class="color mr-10">
+                  <label for="color{{item.id}}{{color}}" class="mr-10">{{ color }}</label>
+                </div>
+              </form>
+              <div class="item_color hidden h-0">{{ item.color.default }}</div>
+            </div>
+            <div>Size</div>
+            <form class="p-0">
+              <div ng-repeat="size in item.size.options" class="size">
+                <input type="radio" id="size{{item.id}}{{size}}" name="size" ng-model="item.size.default" value="{{size}}" class="hide">
+                <label for="size{{item.id}}{{size}}" class="sizelabel">{{size}}</label>
+              </div>
+            </form>
+            <div class="item_size row mb-10 mt-8">
+              <div class="hidden h-0">{{item.size.default}}</div>
+            </div>
+            <input type="button" value="Add to Cart" class="button mb-0 item_add">
+          </div>
+        </div>
+      </div>
+      <div ng-hide="cardActive" class="row items">
+        <div ng-repeat="item in items | filter: search" data-item="{{item.id}}" ng-class="{{item.id}}" class="percent-3 item simpleCart_shelfItem">
+          <div class="images slideshow"><img ng-src="{{item.photos.thumbnail}}" class="thumb photo active">
+          </div>
+          <div class="item-info">
+            <div ng-click="showCard(item.id);" class="item_name">{{ item.itemname }}</div>
+            <div class="border hide"></div>
+            <div class="item_price">{{ item.price }}</div><img ng-src="{{item.photos.thumbnail}}" class="item_thumb w-80 hide">
+            <div class="item_color row mb-10 mt-8">
+              <form class="p-0">
+                <input ng-repeat="color in item.color.options" type="radio" id="color{{item.id}}{{color}}" name="color" ng-model="item.color.default" value="{{color}}" ng-click="item.photos.thumbnail = item.photos.gallery[$index]" class="color">
+              </form>
+              <div class="hidden h-0">{{item.color.default}}</div>
+            </div>
+            <select class="hide">
+              <option ng-repeat="size in item.size.options" ng-model="item.size.default" value="{{size}}">{{size}}</option>
+            </select>
+            <dl class="dropdown">
+              <dt><a><span class="item_size">{{ item.size.default }}</span></a></dt>
+              <dd>
+                <ul>
+                  <li ng-repeat="size in item.size.options" data-value="{{size}}" ng-model="item.size.default">{{size}}</li>
+                </ul>
+              </dd>
+            </dl>
+            <input type="button" value="Add to Cart" class="button mb-0 item_add">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/lib/angular/new/angular.min.js"></script>
+  <script src="js/lib/angular/new/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+  <script src="js/app/app.js"></script>
+  <script src="js/app/controllers.js"></script>
+  <script src="js/lib/simpleCart.min.js"></script>
+  <script src="js/main.js"></script>
+</body>

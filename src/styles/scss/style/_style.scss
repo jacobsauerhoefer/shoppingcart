@@ -1,0 +1,326 @@
+$bg-color: #E3E9EC;
+$bg-color: #ECF0F1;
+$base-width: 100%;
+$left-sidebar-width: 240px;
+$right-sidebar-width: 240px;
+
+$sidebars: $left-sidebar-width + $right-sidebar-width;
+
+$container-width: 960px;
+$header-height: 60px;
+
+$color: #13ADEF;
+$color-alt: #29333F;
+
+$color-alt: #29333F;
+
+$color: #f9f9f9;
+
+$color: #5BA660;
+
+$base-color: #FAFAFA;
+$base-color: #FDFCFA;
+
+$gradient: linear-gradient(-90deg, #61D2FF, #9EFF61);
+
+html { font-family: $font; }
+
+body {
+
+	background: $base-color;
+	background: url(https://unsplash.imgix.net/uploads/14126758789351371c7ec/aa322c2d?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050);
+	background-size: cover;
+	background-position: center;
+	font-family: $font;
+	color: rgba(61,77,101,1);
+
+}
+
+$main-color: #660863;
+$main-color-rgba: 57,30,97;
+$complimentary-color: #a6991f;
+
+// $main-color: #2faced;
+// $complimentary-color: #1485CC;
+
+header {
+
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+	height: 60px;
+	background: $main-color;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+.layout {
+
+	width: 100%; 
+	height: 100%;
+	overflow: auto;
+	//overflow-y: scroll; /* has to be scroll, not auto */
+	-webkit-overflow-scrolling: touch;
+	background: rgba(20,133,204,0.8);
+	background: rgba(80,80,80,0.8);
+	background: #f5f5f5;
+
+}
+
+.ribbon {
+
+  // position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 40vh;
+  z-index: 0;
+  color: white;
+  // background-color: #2faced;
+  background:
+  linear-gradient(
+    lighten($main-color, 20%),
+    transparent
+  ),
+  linear-gradient(
+    90deg,
+    $main-color,
+    transparent
+  ),
+  linear-gradient(
+    -90deg,
+    $main-color,
+    transparent
+  );
+  
+background-blend-mode: screen;
+
+}
+
+.container,
+header .inner {
+
+	width: 100%;
+	margin: 0 auto;
+
+		@include desktop {
+
+			width: $container-width;
+
+		}
+
+}
+
+.container { 
+
+	position: relative;
+	z-index: 10;
+	// margin-top: -24vh; 
+
+}
+
+.cart {
+
+	width: 60px;
+	color: darken($main-color, 8%);
+	background: lighten($main-color, 4%);
+	height: 60px;
+	position: relative;
+
+	i { 
+
+		font-size: 32px; 
+		margin: 13px;
+
+	}
+	.simpleCart_quantity {
+
+		position: absolute;
+		top: 8px; 
+		right: 8px;
+		background: orange;
+		border-radius: 5px;
+		width: 17px;
+		font-size: 12px;
+		height: 17px;
+		padding: 3px;
+		text-align: center;
+		color: white;
+
+	}
+
+}
+
+.carttotal {
+
+	color: darken(#eee, 35%);
+	background: #eee;
+	height: 48px;
+	width: 96px;
+
+}
+
+.cartpreview:hover {
+
+	.cart {
+
+		background: lighten($main-color, 6%);
+
+	}
+
+	.carttotal {
+
+		background: darken(#eee, 2%);
+
+	}
+
+}
+
+.maincontent {
+
+	//width: calc(100% - 480px);
+	display: inline-block;
+	float: left;
+	//margin-left: 240px;
+
+	@include mobile {
+
+		width: 100%;
+
+	}
+
+}
+
+.center {
+
+	margin: 0 auto;
+
+}
+
+.cropArea {
+
+	background: #E4E4E4;
+	overflow: hidden;
+	width:300px;
+	height:300px;
+	margin: 0 auto;
+	border-radius: 5px;
+
+}
+
+.crop * {
+
+	transition: none;
+
+}
+
+// @media screen and (-webkit-min-device-pixel-ratio:0) { 
+//   select:focus,
+//   textarea:focus,
+//   input:focus {
+//     font-size: 16px;
+//     background: #eee;
+//   }
+// }
+
+/*
+*
+*	Colors
+*
+*/
+
+input.color[value="green"] {
+
+	background: #37D83B;
+
+}
+
+input.color[value="blue"] {
+
+	background: #008CEF;
+
+}
+
+input.color[value="yellow"] {
+
+	background: #FFE23E;
+
+}
+
+input.color[value="Silver"] {
+
+	background: #82858c;
+
+}
+
+input.color[value="White"],
+input.color[value="White / Light Blue"],
+input.color[value="White / Light Stone"] {
+
+	background: #f5f4f9;
+
+}
+
+input.color[value="Purple"],
+input.color[value="Purple / Light Stone"] {
+
+	background: #391e61;
+
+}
+
+input.color[value="New Silver"] {
+
+	background: #c3bfbe;
+
+}
+
+input.color[value="Anthracite"] {
+
+	background: #3f4346;
+
+}
+
+input.color[value="Pink"],
+input.color[value="Light Pink"] {
+
+	background: #f9c3b9;
+
+}
+
+input.color[value="Black"] {
+
+	background: #313131;
+
+}
+
+input.color[value="Cardinal"],
+input.color[value="Burgundy"] {
+
+	background: #991d2b;
+
+}
+
+input.color[value="Slate Grey"] {
+
+	background: #a5a8a9;
+
+}
+
+input.color[value="Hot Pink"] {
+
+	background: #deb4c8;
+
+}
+
+input.color[value="Aqua"] {
+
+	background: #a7cfd7;
+
+}
+
+input.color[value="Maroon"] {
+
+	background: #5d202f;
+
+}
+
+/* End Colors */

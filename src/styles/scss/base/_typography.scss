@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
+
+$font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font2: "Libre Baskerville", serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  font-family: $font;
+  line-height: 1.2;
+  font-weight: 200;
+  margin-bottom: $g12;
+
+}
+
+h1 {
+
+  font-size: $g40;
+
+}
+
+h2 {
+
+  font-size: $g32;
+
+}
+
+h3 {
+
+  font-size: $g30;
+
+}
+
+h4 {
+  
+  font-size: $g24;
+
+}
+
+h5 {
+
+  font-size: $g20;
+
+}
+
+h1.bold,
+h2.bold,
+h3.bold,
+h4.bold,
+h5.bold,
+h6.bold {
+  
+  font-weight: 400;
+  
+}
+
+.font-200 {
+
+  font-weight: 200;
+
+}
+
+.font-300 {
+
+  font-weight: 300;
+
+}
+
+.font-400 {
+
+  font-weight: 400;
+
+}
+
+.font-500 {
+
+  font-weight: 500;
+
+}
+
+.font-600 {
+
+  font-weight: 600;
+
+}
+
+.font-700 {
+
+  font-weight: 700;
+
+}
+
+.text-center {
+
+	text-align: center;
+
+}
+

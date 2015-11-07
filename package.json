@@ -1,0 +1,51 @@
+{
+  "name": "TheStorynote",
+  "main": "server.js",
+  "dependencies": {
+    "atob": "^1.1.2",
+    "aws-sdk": "^2.1.33",
+    "bcrypt-nodejs": "latest",
+    "connect-flash": "~0.1.1",
+    "crypto": "0.0.3",
+    "ejs": "~0.8.5",
+    "express": "~3.4.8",
+    "fix-orientation": "0.0.2",
+    "formidable": "^1.0.17",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-jade": "*",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-rename": "^1.2.0",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-sass": "*",
+    "jade": ">= 0.26.1",
+    "mkdirp": "^0.5.0",
+    "mongoose": "~3.8.1",
+    "mongoose-friends": "^0.2.3",
+    "multer": "^0.1.8",
+    "mysql": ">= 0.0.0",
+    "node": "^0.0.0",
+    "nodemailer": "^1.3.2",
+    "nodemailer-smtp-transport": "^1.0.2",
+    "passport": "~0.1.17",
+    "passport-facebook": "~1.0.2",
+    "passport-google-oauth": "~0.1.5",
+    "passport-local": "~0.1.6",
+    "passport-twitter": "~1.0.2",
+    "process": "^0.11.1",
+    "scss": "*",
+    "socket.io": "^1.3.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication",
+  "version": "0.0.1",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://iamphone@bitbucket.org/iamphone/thestorynotemaster.git"
+  },
+  "author": "Jacob John Sauerhoefer",
+  "license": "Copyright 2015 Jacob John Sauerhoefer"
+}

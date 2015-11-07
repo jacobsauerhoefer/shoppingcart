@@ -1,0 +1,53 @@
+doctype html
+html(ng-app="shopApp")
+head
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge')
+	title This is a project title
+	meta(name='description', content='My new project description')
+	meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0')
+	meta(name='apple-mobile-web-app-capable', content='yes')
+	meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+	link(rel='stylesheet', href='css/main.min.css')
+	link(rel='stylesheet', href='//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css')
+	link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+body
+	div.layout
+		header
+			div.inner
+				a(href="index.html")
+					img.logo.left.h-60.p-5(src="https://www.chelseagroton.com/Portals/0/logo.png")
+				a(href="checkout.html")
+					div.right.cart
+						i.fa.fa-2x.fa-shopping-cart
+						div.simpleCart_quantity
+						//- div.simpleCart_items
+						//- div.simpleCart_total
+		div.container.mt-80.checkout
+			div#simpleCart_items.simpleCart_items
+			div.totals.pl-40.pr-40
+				b Subtotal:
+				div#simpleCart_total.simpleCart_total
+				b Tax:
+				div#simpleCart_tax.simpleCart_tax
+				b Please select a Shipping Method
+				div.shippingtype.active(data-type="ship") Ship to address ($9.95)
+				div.shippingtype(data-type="pickup") Pick Up from R&B Apparel Plus (Free)
+				//- b Shipping
+				//- div#simpleCart_shipping.simpleCart_shipping
+				b Final Total:
+				div#simpleCart_grandTotal.simpleCart_grandTotal
+				b All sales are final.
+			div.row.pl-40.pr-40.pt-20
+				a.simpleCart_checkout.button.blue.percent-1(href="javascript:;") Checkout
+
+				
+
+	script(src='js/lib/angular/new/angular.min.js')
+	script(src='js/lib/angular/new/angular-route.js')
+	script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')
+	script(src='js/lib/simpleCart.min.js')
+	script(src='js/main.js')
+	script(src='//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js')
+	script(src='js/app/app.js')
+	script(src='js/app/controllers.js')

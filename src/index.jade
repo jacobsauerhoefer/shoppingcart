@@ -1,0 +1,108 @@
+doctype html
+html(ng-app="shopApp")
+head
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge')
+	title Cart
+	meta(name='description', content='My new project description')
+	meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0')
+	meta(name='apple-mobile-web-app-capable', content='yes')
+	meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+	link(rel='stylesheet', href='css/main.min.css')
+	link(rel='stylesheet', href='//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css')
+	link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+body
+	div.layout
+		header
+			div.inner
+				//- h1.left.p-5 Chelsea Groton Bank Shop
+				a(href="index.html")
+					img.logo.left.h-60.p-5(src="https://www.chelseagroton.com/Portals/0/logo.png")
+				a.cartpreview.right(href="checkout.html")
+					div.left.cart
+						i.left.fa.fa-shopping-cart
+						//- div.left Cart
+						div.left.simpleCart_quantity
+						//- div.simpleCart_items
+		div.ribbon.mt-60.text-center.hide
+			h2.pt-60.font-300 Welcome to the Chelsea Groton Shop!
+		div.container.mt-120(ng-controller='itemController')
+			div.row.hide
+				i.fa.fa-th.fa-2x.mr-20
+				i.fa.fa-align-justify.fa-2x
+			div.row(ng-hide="cardActive")
+				input.search(type="text" ng-model="search.itemname" placeholder="Search" ng-change="slickCarousel();")
+			div.row
+				div.shopmore(ng-show="cardActive" ng-click="hideCard()") 
+					i.fa.fa-angle-left
+					|  Continue Shopping
+				div.itemcard.simpleCart_shelfItem(ng-repeat='item in items | filter: search' data-item="{{item.id}}" ng-class="{ 'visible': activeitem == '{{item.id}}' }" ng-show="cardActive && activeitem === '{{item.id}}'")
+					div.images.slideshow
+						img.thumb.photo.active(ng-src="{{item.photos.thumbnail}}")
+						//- div(ng-repeat='photo in item.photos.gallery')
+							img.thumb(ng-src="{{photo}}")
+					div.item-info
+							div.item_name(title="{{item.itemname}}" contentEditable="true") {{ item.itemname }}
+							div.complimentary_desc {{ item.id }}
+							div.item_price {{ item.price }}
+							div.item_desc.mb-10(contentEditable="true" ng-blur="update();") {{ item.description }}
+							div Color
+							img.item_thumb.w-80.hide(ng-src="{{item.photos.thumbnail}}")
+							div.colors.row.mb-10.mt-8
+								form.p-0
+									//- input(type="radio" id="color{{item.id}}{{item.color.default}}" name="color" ng-model="item.color.default" ng-checked value="{{item.color.default}}")
+									div.colorholder(ng-repeat="color in item.color.options track by $index")
+										input.color.mr-10(type="radio" id="color{{item.id}}{{color}}" name="color" ng-model="item.color.default" value="{{color}}" ng-click="item.photos.thumbnail = item.photos.gallery[$index]; item.color.default = item.color.options[$index]")
+										label.mr-10(for="color{{item.id}}{{color}}") {{ color }}
+									//- input(type="radio" id="color{{item.id}}green" name="color" ng-model="item.color.default" value="green")
+								div.item_color.hidden.h-0 {{ item.color.default }}
+							//- div.item_color.row.mb-10.mt-8
+							//- 	form.p-0
+							//- 		//- input(type="radio" id="color{{item.id}}{{item.color.default}}" name="color" ng-model="item.color.default" ng-checked value="{{item.color.default}}")
+							//- 		input.color(ng-repeat="color in item.color.options" type="radio" id="color{{item.id}}{{color}}" name="color" ng-model="item.color.default" value="{{color}}" ng-click="item.photos.thumbnail = item.photos.gallery[$index]")
+							//- 		//- input(type="radio" id="color{{item.id}}green" name="color" ng-model="item.color.default" value="green")
+							//- 	div.hidden.h-0 {{item.color.default}}
+							div Size
+							form.p-0
+								div.size(ng-repeat="size in item.size.options")
+									input.hide(type="radio" id="size{{item.id}}{{size}}" name="size" ng-model="item.size.default" value="{{size}}")
+									label.sizelabel(for="size{{item.id}}{{size}}") {{size}}
+							div.item_size.row.mb-10.mt-8
+								div.hidden.h-0 {{item.size.default}}
+							input.button.mb-0.item_add(type="button" value="Add to Cart")
+			div.row.items(ng-hide="cardActive")
+				div.percent-3.item.simpleCart_shelfItem(ng-repeat='item in items | filter: search' data-item="{{item.id}}" ng-class="{{item.id}}")
+					div.images.slideshow
+						img.thumb.photo.active(ng-src="{{item.photos.thumbnail}}")
+						//- div(ng-repeat='photo in item.photos.gallery')
+							img.thumb.photo(ng-src="{{photo}}")
+					div.item-info
+						div.item_name(ng-click="showCard(item.id);") {{ item.itemname }}
+						div.border.hide
+						div.item_price {{ item.price }}
+						img.item_thumb.w-80.hide(ng-src="{{item.photos.thumbnail}}")
+						div.item_color.row.mb-10.mt-8
+							form.p-0
+								//- input(type="radio" id="color{{item.id}}{{item.color.default}}" name="color" ng-model="item.color.default" ng-checked value="{{item.color.default}}")
+								input.color(ng-repeat="color in item.color.options" type="radio" id="color{{item.id}}{{color}}" name="color" ng-model="item.color.default" value="{{color}}" ng-click="item.photos.thumbnail = item.photos.gallery[$index]")
+								//- input(type="radio" id="color{{item.id}}green" name="color" ng-model="item.color.default" value="green")
+							div.hidden.h-0 {{item.color.default}}
+						select.hide
+							option(ng-repeat="size in item.size.options" ng-model="item.size.default" value="{{size}}") {{size}}
+						dl.dropdown
+							dt
+								a
+									span.item_size {{ item.size.default }}
+							dd
+								ul
+									li(ng-repeat="size in item.size.options" data-value="{{size}}" ng-model="item.size.default") {{size}}
+						input.button.mb-0.item_add(type="button" value="Add to Cart")
+
+	script(src='js/lib/angular/new/angular.min.js')
+	script(src='js/lib/angular/new/angular-route.js')
+	script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')
+	script(src='//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js')
+	script(src='js/app/app.js')
+	script(src='js/app/controllers.js')
+	script(src='js/lib/simpleCart.min.js')
+	script(src='js/main.js')

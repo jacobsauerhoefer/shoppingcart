@@ -1,0 +1,173 @@
+/*//////////////////////////////////////////////////////////////
+
+Public Document: _size.scss
+Description: Size for web development
+Author: Jacob Sauerhoefer
+v1.0
+
+////////////////////////////////////////////////////////////////*/
+
+/*--------------------------------------------------------------
+
+Percentage List
+
+----------------------------------------------------------------*/
+
+$percentages:   		(75, 74.25%),
+						(15, 3.888888888%),
+						(6, 14.1%),
+						(5, 17.6%),
+						(4, 22.75%),
+						(3, 31.333333333333332%),
+						(2, 48.5%),
+						(1, 100%);
+
+/*--------------------------------------------------------------
+
+960px Grid Variables
+
+----------------------------------------------------------------*/
+
+$grid-list: 			0 1 2 3 4 5 6 8 10 12 15 20 24 30 32 40 48 60 64 80 96 120 160 192 240 320 480 540 640 768;
+$sides: 				("", ""),
+						("t", "-top"),
+						("r", "-right"),
+						("b", "-bottom"),
+						("l", "-left");
+$size-properties:		("w", "width"),
+						("h", "height");
+$space-properties:		("m", "margin"),
+						("p", "padding");
+
+/*--------------------------------------------------------------
+
+Looping through percentages
+
+----------------------------------------------------------------*/
+
+@each $split, $percent in $percentages {
+
+	.row .percent-#{$split} {
+
+		//height: 0;
+		//padding-bottom: $percent !important;
+		width: $percent !important;
+		margin-right: 3%;
+		display: inline-block;
+
+			@include tablet {
+
+			//width: 48.5% !important;
+
+			}
+
+			@include mobile {
+
+				width: 100% !important;
+				margin-right: 0;
+
+			}
+
+	}
+
+	.row .mobile-#{$split} {
+
+		@include mobile {
+
+			width: $percent !important;
+			margin-right: 3%;
+
+		}
+
+	}
+
+	.row .percent-#{$split}:nth-child(#{$split}n),
+	.row .percent-#{$split}:last-child {
+
+		margin-right: 0px !important;
+
+	}
+
+	.hperc-#{$split} {
+
+		height: $percent !important;
+		//padding-bottom: 0px !important;
+		margin-bottom: 2.5%;
+
+	}
+
+} // End Each for percentages
+
+/*--------------------------------------------------------------
+
+Looping through 960 Grid
+
+----------------------------------------------------------------*/
+
+@each $grid-num in $grid-list {
+
+  $px: ();
+
+  $px: append($px, $grid-num + px);
+
+	.size-#{$grid-num} {
+
+		@each $size in $px {
+
+			height: $size !important;
+			width: $size !important;
+			//line-height: $i !important;
+
+		}
+
+	}
+
+    @each $acronym, $property in $size-properties {
+
+		.#{$acronym}-#{$grid-num} {
+
+			@each $size in $px {
+
+				#{$property}: $size !important;
+
+			}
+
+		}
+
+    }
+
+    @each $acronym, $property in $space-properties {
+
+    	@each $side, $direction in $sides {
+
+			.#{$acronym}#{$side}-#{$grid-num} {
+
+				@each $size in $px {
+
+					#{$property}#{$direction}: $size !important;
+
+				}
+
+			}
+
+		}
+
+    }
+
+	/* Font Sizing Based on Grid */
+
+	.fs-#{$grid-num} {
+
+		@each $i in $px {
+
+			font-size: $i !important;
+			line-height: 1.66 !important;
+
+		}
+
+	}
+
+} // Close 960px For Each
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="shopApp"></html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>This is a project title</title>
+  <meta name="description" content="My new project description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <div class="inner"><a href="index.html"><img src="https://www.chelseagroton.com/Portals/0/logo.png" class="logo left h-60 p-5"></a><a href="checkout.html">
+          <div class="right cart"><i class="fa fa-2x fa-shopping-cart"></i>
+            <div class="simpleCart_quantity"></div>
+          </div></a></div>
+    </header>
+    <div class="container mt-80 checkout">
+      <div id="simpleCart_items" class="simpleCart_items"></div>
+      <div class="totals pl-40 pr-40"><b>Subtotal:</b>
+        <div id="simpleCart_total" class="simpleCart_total"></div><b>Tax:</b>
+        <div id="simpleCart_tax" class="simpleCart_tax"></div><b>Please select a Shipping Method</b>
+        <div data-type="ship" class="shippingtype active">Ship to address ($9.95)</div>
+        <div data-type="pickup" class="shippingtype">Pick Up from R&B Apparel Plus (Free)</div><b>Final Total:</b>
+        <div id="simpleCart_grandTotal" class="simpleCart_grandTotal"></div><b>All sales are final.</b>
+      </div>
+      <div class="row pl-40 pr-40 pt-20"><a href="javascript:;" class="simpleCart_checkout button blue percent-1">Checkout</a></div>
+    </div>
+  </div>
+  <script src="js/lib/angular/new/angular.min.js"></script>
+  <script src="js/lib/angular/new/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="js/lib/simpleCart.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+  <script src="js/app/app.js"></script>
+  <script src="js/app/controllers.js"></script>
+</body>
